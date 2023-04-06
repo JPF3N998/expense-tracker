@@ -25,6 +25,12 @@
       ],
       "@config/*": [
         "config/*"
+      ],
+      "@models/*": [
+        "models/*"
+      ],
+      "@views/*": [
+        "views/*"
       ]
     }
   },

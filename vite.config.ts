@@ -11,6 +11,8 @@ const alias = {
   '@': getResolved('src'),
   '@components': getResolved('src/components'),
   '@config': getResolved('src/config'),
+  '@models': getResolved('src/models'),
+  '@views': getResolved('src/views'),
 }
 
 // https://vitejs.dev/config/
