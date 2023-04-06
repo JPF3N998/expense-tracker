@@ -10,6 +10,7 @@
   },
   "dependencies": {
     "@fluentui/web-components": "^2.5.12",
+    "@formkit/vue": "0.17.0-08a1a6f",
     "@microsoft/fast-element": "^1.11.0",
     "lodash-es": "^4.17.21",
     "vue": "^3.2.47"

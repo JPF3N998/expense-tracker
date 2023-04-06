@@ -2,6 +2,7 @@ lockfileVersion: 5.4
 
 specifiers:
   '@fluentui/web-components': ^2.5.12
+  '@formkit/vue': 0.17.0-08a1a6f
   '@microsoft/fast-element': ^1.11.0
   '@types/node': ^18.15.11
   '@vitejs/plugin-vue': ^4.1.0
@@ -13,6 +14,7 @@ specifiers:
 
 dependencies:
   '@fluentui/web-components': 2.5.12
+  '@formkit/vue': 0.17.0-08a1a6f_vue@3.2.47
   '@microsoft/fast-element': 1.11.0
   lodash-es: 4.17.21
   vue: 3.2.47
@@ -255,6 +257,99 @@ packages:
       '@microsoft/fast-foundation': 2.47.0
       '@microsoft/fast-web-utilities': 5.4.1
       tslib: 2.5.0
+    dev: false
+
+  /@formkit/core/0.17.0-08a1a6f:
+    resolution: {integrity: sha512-w3zMmuHPcAvrrqk8ImQ5pDy8rRo16s4XcZcAIs6RpIza8/2ZvRrVonnPgLTKomMTkA84RpLoMTQVTY42NqxwVQ==}
+    dependencies:
+      '@formkit/utils': 0.17.0-08a1a6f
+    dev: false
+
+  /@formkit/dev/0.17.0-08a1a6f:
+    resolution: {integrity: sha512-G1eueOIVcwJwq0GC46s7oDShTKmgS/d6pYax5NLpWHVuQ3D6ZKbLf7s6YY1Ye5kppYoum0uHd67Q5rhY4VDuwQ==}
+    dependencies:
+      '@formkit/core': 0.17.0-08a1a6f
+      '@formkit/utils': 0.17.0-08a1a6f
+    dev: false
+
+  /@formkit/i18n/0.17.0-08a1a6f:
+    resolution: {integrity: sha512-g7kb3rIXdRsgxuQsDrxCEFrRVj1o89ZLVRZ6ENuiqd1oVRmMYrzZW1N/2Eji1ZcyQ99oVoDZ7WGdmAvS7tzMtw==}
+    dependencies:
+      '@formkit/core': 0.17.0-08a1a6f
+      '@formkit/utils': 0.17.0-08a1a6f
+      '@formkit/validation': 0.17.0-08a1a6f
+    dev: false
+
+  /@formkit/inputs/0.17.0-08a1a6f:
+    resolution: {integrity: sha512-UisrB+dXnfWAeoJmTxRfiSp/duQaQQtvzMqAdkImQLRg1c7xRK7pRt0rV+/S3KlPm+0xY+Hc5GV/Jxl2zORyYg==}
+    dependencies:
+      '@formkit/core': 0.17.0-08a1a6f
+      '@formkit/utils': 0.17.0-08a1a6f
+    dev: false
+
+  /@formkit/observer/0.17.0-08a1a6f:
+    resolution: {integrity: sha512-/AXmOeTBbRE9JNGgQsiBkvgxCNzi6zExqEt1tPvwX60mXvDYHUyH5iHIjRDj4aHoZMgtEf87yeFEF7a3e+sVag==}
+    dependencies:
+      '@formkit/core': 0.17.0-08a1a6f
+      '@formkit/utils': 0.17.0-08a1a6f
+    dev: false
+
+  /@formkit/rules/0.17.0-08a1a6f:
+    resolution: {integrity: sha512-x2whSNih3qBantYgbZ3fpVBx0YMbdP2ml/QYRojN7/GiPy4IqgytErWA1apFgSU2bFq/0oqeZWsiEOpA4361+Q==}
+    dependencies:
+      '@formkit/core': 0.17.0-08a1a6f
+      '@formkit/utils': 0.17.0-08a1a6f
+      '@formkit/validation': 0.17.0-08a1a6f
+    dev: false
+
+  /@formkit/themes/0.17.0-08a1a6f:
+    resolution: {integrity: sha512-B+wqBKkjnQpCpeKG60UxFLi4pGwMx5Sc98ZMMRPPK4LIHc0LiHjC2NZoc5wUfGLit+Ira/uKSCXYngUSlHSvmA==}
+    peerDependencies:
+      tailwindcss: ^3.2.0
+      unocss: ^0.31.0
+      windicss: ^3.0.0
+    peerDependenciesMeta:
+      tailwindcss:
+        optional: true
+      unocss:
+        optional: true
+      windicss:
+        optional: true
+    dependencies:
+      '@formkit/core': 0.17.0-08a1a6f
+    dev: false
+
+  /@formkit/utils/0.17.0-08a1a6f:
+    resolution: {integrity: sha512-FVXjNyULFMRAf1xRIod+stlBRDCg5XaHMFei55DHseMxnCiedLaJqMxFrhpzWlxUjE4y77seIczXYbPPP/buww==}
+    dev: false
+
+  /@formkit/validation/0.17.0-08a1a6f:
+    resolution: {integrity: sha512-l4bkRJm5rTblGgVqtMGBL57f8VrO/SlnKp9acBagtxErLUAsxBVImC/edtezHvOTIn8ysO0fciAnR/67iJMeIQ==}
+    dependencies:
+      '@formkit/core': 0.17.0-08a1a6f
+      '@formkit/observer': 0.17.0-08a1a6f
+      '@formkit/utils': 0.17.0-08a1a6f
+    dev: false
+
+  /@formkit/vue/0.17.0-08a1a6f_vue@3.2.47:
+    resolution: {integrity: sha512-PToeJWT7gxPmpUoPjevha6alKSidT7ktT9/xGlwl5x0TjRGnqro0MNgE/pAvweAVcJ+ikEyqllh0WFagfnEzAg==}
+    peerDependencies:
+      vue: ^3.2.1
+    dependencies:
+      '@formkit/core': 0.17.0-08a1a6f
+      '@formkit/dev': 0.17.0-08a1a6f
+      '@formkit/i18n': 0.17.0-08a1a6f
+      '@formkit/inputs': 0.17.0-08a1a6f
+      '@formkit/observer': 0.17.0-08a1a6f
+      '@formkit/rules': 0.17.0-08a1a6f
+      '@formkit/themes': 0.17.0-08a1a6f
+      '@formkit/utils': 0.17.0-08a1a6f
+      '@formkit/validation': 0.17.0-08a1a6f
+      vue: 3.2.47
+    transitivePeerDependencies:
+      - tailwindcss
+      - unocss
+      - windicss
     dev: false
 
   /@microsoft/fast-colors/5.3.1:
