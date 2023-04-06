@@ -1,6 +1,6 @@
 <script setup lang="ts">
 import { ref } from 'vue';
-import Alo from '@components/Alo.vue'
+import Layout from '@views/Layout.vue'
 
 const count = ref(0);
 
@@ -10,10 +10,5 @@ function onClick() {
 </script>
 
 <template>
-  <div>
-    <Alo />
-    <fluent-card>
-      <fluent-button appearance="accent" v-on:click="onClick">{{ count }}</fluent-button>
-    </fluent-card>
-  </div>
+  <Layout></Layout>
 </template>
