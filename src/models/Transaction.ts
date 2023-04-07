@@ -1,5 +1,4 @@
 interface TransactionOptions {
-  currency: string
   details?: string | undefined
   emoji?: string | undefined
 }
@@ -11,15 +10,17 @@ export default class Transaction {
   emoji: string | undefined;
   currency: string;
 
-  constructor(name: string, amount: number, options: TransactionOptions) {
-    const { currency = 'USD', details = '', emoji } = options;
-
+  constructor(name: string, amount: number, currency: string = 'USD', options?: TransactionOptions) {
     this.name = name;
     this.amount = amount;
     this.currency = currency;
+    this.details = '';
 
-    this.details = details;
-    this.emoji = emoji
+    if (options) {
+      const { details = '', emoji } = options;
+      this.details = details;
+      this.emoji = emoji;
+    }
   }
 }
 
