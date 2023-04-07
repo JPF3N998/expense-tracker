@@ -3,6 +3,8 @@ import { ref, Ref } from 'vue';
 import CONSTANTS from '@constants'
 import Record from '@models/Record';
 
+const { CURRENCIES, FUIC } = CONSTANTS
+
 const data: Ref<Record> = ref({
   name: '',
   amount: 0,
@@ -21,7 +23,7 @@ const schema = [
     $formkit: 'text',
     name: 'name',
     sectionsSchema: {
-      input: { $el: 'fluent-text-field' }
+      input: { $el: FUIC.fluentTextField }
     },
     label: 'Record name',
     help: 'Record identifier name',
@@ -35,7 +37,7 @@ const schema = [
     name: 'amount',
     label: 'Amount',
     sectionsSchema: {
-      input: { $el: 'fluent-number-field'}
+      input: { $el: FUIC.fluentNumberField }
     }
   },
   {
@@ -46,24 +48,24 @@ const schema = [
     maxLength: 200,
     validation: 'required',
     sectionsSchema: {
-      input: { $el: 'fluent-text-area'}
+      input: { $el: FUIC.fluentTextArea }
     }
   },
   {
     $formkit: 'text',
     label: 'Emoji',
     name: 'emoji',
-    maxLength: 1,
+    maxLength: 2,
     sectionsSchema: {
-      input: { $el: 'fluent-text-field' }
+      input: { $el: FUIC.fluentTextField }
     },
-    validation: 'length:1,1', // Check if only emoji, show emoji chooser in the future
+    // Validation: check if only emoji, show emoji chooser in the future
   },
   {
     $formkit: 'select',
     name: 'currency',
     label: 'Currency',
-    options: CONSTANTS.CURRENCIES,
+    options: CURRENCIES,
     value: 'USD'
   }
 ]
