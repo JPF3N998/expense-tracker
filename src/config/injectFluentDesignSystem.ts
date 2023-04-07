@@ -1,7 +1,5 @@
 import {
   provideFluentDesignSystem,
-  fluentCard,
-  fluentButton,
   fluentTextField,
   fluentNumberField,
   fluentTextArea
@@ -9,12 +7,10 @@ import {
 
 const fluentDesignSystem = provideFluentDesignSystem();
 
-const components = [
-  fluentCard,
-  fluentButton,
-  fluentTextField,
+export const components = [
   fluentNumberField,
-  fluentTextArea
+  fluentTextArea,
+  fluentTextField,
 ]
 
 components.forEach((component) => {
