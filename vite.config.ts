@@ -11,6 +11,7 @@ const alias = {
   '@': getResolved('src'),
   '@components': getResolved('src/components'),
   '@config': getResolved('src/config'),
+  '@constants': getResolved('src/constants'),
   '@models': getResolved('src/models'),
   '@views': getResolved('src/views'),
 }
@@ -20,7 +21,7 @@ export default defineConfig({
   plugins: [vue({
     template: {
       compilerOptions: {
-        isCustomElement: (tag) => tag.includes('-')
+        isCustomElement: (tag) => tag.includes('fluent-')
       }
     }
   })],
