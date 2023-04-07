@@ -1,10 +1,20 @@
-import { provideFluentDesignSystem, fluentCard, fluentButton } from '@fluentui/web-components';
+import {
+  provideFluentDesignSystem,
+  fluentCard,
+  fluentButton,
+  fluentTextField,
+  fluentNumberField,
+  fluentTextArea
+} from '@fluentui/web-components';
 
 const fluentDesignSystem = provideFluentDesignSystem();
 
 const components = [
   fluentCard,
-  fluentButton
+  fluentButton,
+  fluentTextField,
+  fluentNumberField,
+  fluentTextArea
 ]
 
 components.forEach((component) => {
