@@ -1,7 +1,7 @@
-import Record from '@models/Record'
+import Transaction from '@models/Transaction'
 
 const Models = {
-  Record
+  Transaction
 }
 
 export default Models

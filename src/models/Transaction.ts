@@ -1,24 +1,24 @@
-interface RecordOptions {
+interface TransactionOptions {
   currency: string
-  description?: string | undefined
+  details?: string | undefined
   emoji?: string | undefined
 }
 
-export default class Record {
+export default class Transaction {
   name: string;
   amount: number;
-  description: string | undefined;
+  details: string | undefined;
   emoji: string | undefined;
   currency: string;
 
-  constructor(name: string, amount: number, options: RecordOptions) {
-    const { currency = 'USD', description, emoji } = options;
+  constructor(name: string, amount: number, options: TransactionOptions) {
+    const { currency = 'USD', details, emoji } = options;
 
     this.name = name;
     this.amount = amount;
     this.currency = currency;
 
-    this.description = description;
+    this.details = details;
     this.emoji = emoji
   }
 }
