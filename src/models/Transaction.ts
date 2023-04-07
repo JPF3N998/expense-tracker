@@ -7,12 +7,12 @@ interface TransactionOptions {
 export default class Transaction {
   name: string;
   amount: number;
-  details: string | undefined;
+  details: string;
   emoji: string | undefined;
   currency: string;
 
   constructor(name: string, amount: number, options: TransactionOptions) {
-    const { currency = 'USD', details, emoji } = options;
+    const { currency = 'USD', details = '', emoji } = options;
 
     this.name = name;
     this.amount = amount;
