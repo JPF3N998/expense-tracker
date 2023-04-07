@@ -9,6 +9,9 @@
     "resolveJsonModule": true,
     "isolatedModules": true,
     "esModuleInterop": true,
+    "outDir": "build",
+    "sourceRoot": "src",
+    "sourceMap": true,
     "lib": [
       "ESNext",
       "DOM"
