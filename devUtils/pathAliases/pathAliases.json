@@ -1,0 +1,8 @@
+{
+  "@": "src",
+  "@components": "src/components",
+  "@config": "src/config",
+  "@constants": "src/constants",
+  "@models": "src/models",
+  "@views": "src/views"
+}

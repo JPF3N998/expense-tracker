@@ -63,15 +63,19 @@ const schema = [
         name: 'emoji',
         maxLength: 2,
         sectionsSchema: {
-          input: { $el: FUIC.fluentTextField }
+          input: { $el: FUIC.fluentTextField },
         },
-      // Validation: check if only emoji, show emoji chooser in the future
+        // Validation: check if only emoji, show emoji chooser in the future
       },
       {
         $formkit: 'select',
         name: 'currency',
         label: 'Currency',
         options: CURRENCIES,
+        sectionsSchema: {
+          input: { $el: FUIC.fluentSelect },
+          option: { $el: FUIC.fluentOption }
+        },
       }
     ]
   },
