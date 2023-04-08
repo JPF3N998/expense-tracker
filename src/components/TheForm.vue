@@ -46,6 +46,12 @@ const schema = [
         value: '0'
       },
       {
+        $formkit: 'date',
+        name: 'date',
+        label: 'Date',
+        validation: 'required'
+      },
+      {
         $formkit: 'textarea',
         label: 'Details',
         name: 'details',
