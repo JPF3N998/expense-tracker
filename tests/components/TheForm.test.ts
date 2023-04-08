@@ -1,7 +1,7 @@
 import { render, RenderResult, screen } from '@testing-library/vue';
 import { beforeEach, describe, expect, it } from 'vitest';
 import { plugin, defaultConfig } from '@formkit/vue';
-
+import { provideFluentDesignSystem } from '@fluentui/web-components';
 import TheForm from '@components/TheForm.vue';
 
 // Registering global plugins (FormKit, for instance) in test
@@ -17,19 +17,25 @@ describe('TheForm', () => {
           plugins: [[plugin, defaultConfig()]],
         },
       });
+      // provideFluentDesignSystem(dom.baseElement as HTMLElement);
     });
 
     describe('the correct fields', () => {
       const targetFieldNames = [
         'name',
         'amount',
+        'date',
         'details',
         'emoji',
         'currency',
       ];
 
-      let el: HTMLElement;
+      it('should have the correct amount of fields', () => {
+        const foundElements = document.querySelectorAll('label');
+        expect(foundElements.length).toEqual(targetFieldNames.length);
+      });
 
+      let el: HTMLElement;
       targetFieldNames.forEach((name) => {
         it(`should render field with name: "${name}"`, async () => {
           el = document.querySelector(`[name="${name}"]`);
