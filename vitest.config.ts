@@ -23,6 +23,7 @@ export default defineConfig({
     globals: true,
     include: ['tests/**/*.{test,spec}.{js,mjs,cjs,ts,mts,cts,jsx,tsx}'],
     environment: 'jsdom',
+    setupFiles: ['./tests/utils/mockMatchMedia.ts'],
   },
   resolve: { alias },
 });
