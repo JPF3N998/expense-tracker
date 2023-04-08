@@ -5,13 +5,27 @@ import Transaction from '@models/Transaction';
 
 const { CURRENCIES, FUIC } = CONSTANTS
 
-const data: Ref<Transaction> = ref({
-  name: '',
-  amount: 0,
-  details: '',
-  emoji: '',
-  currency: 'USD',
-})
+const getToday = () => {
+  const today = new Date()
+
+  let month = `0${today.getMonth() + 1}`
+  let date = `0${today.getDate()}`
+
+  // To set initial value of date input, prefix 0s are needed
+  // These if blocks trims the zero if necessary
+  if (month.length === 3) {
+    month = month.substring(1)
+  }
+
+  if (date.length === 3) {
+    date = date.substring(1)
+  }
+
+  const output = `${today.getFullYear()}-${month}-${date}`
+  console.log(output);
+
+  return output
+}
 
 // LINK: [How to modify sectionsSchema as prop](https://github.com/formkit/formkit/issues/643)
 const schema = [
@@ -35,7 +49,7 @@ const schema = [
       },
       {
         $formkit: 'number',
-        min: 0,
+        min: 0.1,
         step: 0.1,
         required: true,
         name: 'amount',
@@ -43,13 +57,14 @@ const schema = [
         sectionsSchema: {
           input: { $el: FUIC.fluentNumberField }
         },
-        value: '0'
+        value: '1'
       },
       {
         $formkit: 'date',
         name: 'date',
         label: 'Date',
-        validation: 'required'
+        validation: 'required',
+        value: getToday()
       },
       {
         $formkit: 'textarea',
