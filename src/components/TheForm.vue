@@ -47,14 +47,14 @@ const schema = [
         validation: 'required',
       },
       {
-        $formkit: 'number',
+        $formkit: 'text',
         min: 0.1,
         step: 0.1,
         required: true,
         name: 'amount',
         label: 'Amount',
         sectionsSchema: {
-          input: { $el: FUIC.fluentNumberField }
+          input: { $el: FUIC.fluentTextField }
         },
         value: '1'
       },
