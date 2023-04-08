@@ -123,8 +123,5 @@ function handleSubmit({ transaction: transactionData }: { transaction: Transacti
     <FormKit type="form" @submit="handleSubmit" submit-label="Register">
       <FormKitSchema :schema="schema" />
     </FormKit>
-    <p>
-      {{ transactionsStore.transactions }}
-    </p>
   </div>
 </template>
