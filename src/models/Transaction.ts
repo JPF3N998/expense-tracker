@@ -9,7 +9,7 @@ export default class Transaction {
   details: string;
   emoji: string | undefined;
   currency: string;
-  date!: Date;
+  date!: string;
 
   constructor(
     name: string,
@@ -22,36 +22,12 @@ export default class Transaction {
     this.amount = amount;
     this.currency = currency;
     this.details = '';
-
-    this.setDate(date);
+    this.date = date;
 
     if (options) {
       const { details = '', emoji } = options;
       this.details = details;
       this.emoji = emoji;
-    }
-  }
-
-  /**
-   *
-   * @param dateIn string in "YYYY-mm-dd" format
-   */
-  private setDate(dateIn: string) {
-    let year, month, day;
-
-    // NOTE: Date expects month index, not actual month number
-
-    if (dateIn) {
-      [year, month, day] = dateIn.split('-');
-      this.date = new Date(parseInt(year), parseInt(month) - 1, parseInt(day));
-    } else {
-      const date = new Date();
-      [year, month, day] = [
-        date.getFullYear(),
-        date.getMonth(),
-        date.getDate(),
-      ];
-      this.date = new Date(year, month, day);
     }
   }
 }

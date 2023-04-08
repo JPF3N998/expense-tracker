@@ -11,13 +11,13 @@ describe('Transaction Class', () => {
       amount: 999.99,
       currency: 'USD',
       details: '',
-      date: new Date(2023, 4 - 1, 7), // NOTE: Minus 1 to get month index
+      date: '2023-4-7',
     };
 
     const tx = new Transaction(
       expectedTransaction.name,
       expectedTransaction.amount,
-      '2023-4-7'
+      expectedTransaction.date
     );
 
     expect(tx).toEqual(expectedTransaction);
