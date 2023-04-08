@@ -2,7 +2,6 @@ import { beforeEach, describe, expect, it } from 'vitest';
 import { render, RenderResult, screen } from '@testing-library/vue';
 import { plugin, defaultConfig } from '@formkit/vue';
 import { createTestingPinia } from '@pinia/testing';
-import { provideFluentDesignSystem } from '@fluentui/web-components';
 import TheForm from '@components/TheForm.vue';
 
 // Registering global plugins (FormKit, for instance) in test
@@ -10,7 +9,12 @@ import TheForm from '@components/TheForm.vue';
 
 // LINK Testing Pinia in components: https://pinia.vuejs.org/cookbook/testing.html#unit-testing-components
 
-describe('TheForm', () => {
+// Mock window.matchMedia: https://stackoverflow.com/a/42685938
+// Using vi from vitest instead of jest
+
+describe('TheForm', async () => {
+  await import('@config/injectFluentDesignSystem');
+
   describe('Rendering', () => {
     let dom: RenderResult;
 
@@ -20,7 +24,6 @@ describe('TheForm', () => {
           plugins: [[plugin, defaultConfig(), createTestingPinia()]],
         },
       });
-      // provideFluentDesignSystem(dom.baseElement as HTMLElement);
     });
 
     describe('the correct fields', () => {
@@ -32,6 +35,11 @@ describe('TheForm', () => {
         'emoji',
         'currency',
       ];
+
+      it('test', async () => {
+        const el: HTMLInputElement = await screen.findByLabelText('Currency');
+        console.log(el.value);
+      });
 
       it('should have the correct amount of fields', () => {
         const foundElements = document.querySelectorAll('label');
