@@ -1,9 +1,11 @@
 <script lang="ts" setup>
-import { ref, Ref } from 'vue';
+import { useTransactionsStore } from '@stores/transactionsStore';
 import CONSTANTS from '@constants'
 import Transaction from '@models/Transaction';
 
 const { CURRENCIES, FUIC } = CONSTANTS
+
+const transactionsStore = useTransactionsStore()
 
 const getToday = () => {
   const today = new Date()
@@ -21,10 +23,7 @@ const getToday = () => {
     date = date.substring(1)
   }
 
-  const output = `${today.getFullYear()}-${month}-${date}`
-  console.log(output);
-
-  return output
+  return `${today.getFullYear()}-${month}-${date}`
 }
 
 // LINK: [How to modify sectionsSchema as prop](https://github.com/formkit/formkit/issues/643)
@@ -102,20 +101,30 @@ const schema = [
   },
 ]
 
-const tx: Ref<Transaction | null> = ref(null)
-function handleSubmit(submittedData: Transaction) {
-  tx.value = submittedData
+function handleSubmit({ transaction: transactionData }: { transaction: Transaction }) {
+  const { name, amount, date, details, emoji, currency } = transactionData;
+  const transaction = new Transaction(
+    name,
+    amount,
+    date,
+    currency,
+    {
+      details,
+      emoji
+    }
+  )
+  transactionsStore.commitNewTransaction(transaction)
 }
 
 </script>
 
 <template>
   <div>
-    <FormKit type="form" @submit="handleSubmit">
+    <FormKit type="form" @submit="handleSubmit" submit-label="Register">
       <FormKitSchema :schema="schema" />
     </FormKit>
     <p>
-      {{ tx }}
+      {{ transactionsStore.transactions }}
     </p>
   </div>
 </template>
