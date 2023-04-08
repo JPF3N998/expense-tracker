@@ -4,6 +4,7 @@ interface TransactionOptions {
 }
 
 export default class Transaction {
+  private id: string;
   name: string;
   amount: number;
   details: string;
@@ -18,6 +19,7 @@ export default class Transaction {
     currency: string = 'USD',
     options?: TransactionOptions
   ) {
+    this.id = crypto.randomUUID();
     this.name = name;
     this.amount = amount;
     this.currency = currency;
@@ -29,6 +31,10 @@ export default class Transaction {
       this.details = details;
       this.emoji = emoji;
     }
+  }
+
+  getId() {
+    return this.id;
   }
 }
 

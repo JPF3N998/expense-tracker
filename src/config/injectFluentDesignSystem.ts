@@ -1,5 +1,6 @@
 import {
-  fluentNumberField,
+  fluentAccordion,
+  fluentAccordionItem,
   fluentOption,
   fluentSelect,
   fluentTextArea,
@@ -10,7 +11,8 @@ import {
 const fluentDesignSystem = provideFluentDesignSystem();
 
 export const components = [
-  fluentNumberField,
+  fluentAccordion,
+  fluentAccordionItem,
   fluentOption,
   fluentSelect,
   fluentTextArea,

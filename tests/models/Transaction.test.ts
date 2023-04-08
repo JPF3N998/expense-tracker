@@ -7,6 +7,7 @@ import Transaction from '@models/Transaction';
 describe('Transaction Class', () => {
   it('should create a basic Transaction instance with correct props', () => {
     const expectedTransaction = {
+      id: '',
       name: 'New phone',
       amount: 999.99,
       currency: 'USD',
@@ -19,6 +20,8 @@ describe('Transaction Class', () => {
       expectedTransaction.amount,
       expectedTransaction.date
     );
+
+    expectedTransaction.id = tx.getId();
 
     expect(tx).toEqual(expectedTransaction);
   });
