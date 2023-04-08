@@ -13,6 +13,7 @@ const alias = {
   '@config': getResolved('src/config'),
   '@constants': getResolved('src/constants'),
   '@models': getResolved('src/models'),
+  '@stores': getResolved('src/stores'),
   '@views': getResolved('src/views'),
 };
 

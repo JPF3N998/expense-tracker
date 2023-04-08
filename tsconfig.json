@@ -35,6 +35,9 @@
       "@models/*": [
         "models/*"
       ],
+      "@stores/*": [
+        "stores/*"
+      ],
       "@views/*": [
         "views/*"
       ]

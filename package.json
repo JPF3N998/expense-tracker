@@ -14,9 +14,11 @@
     "@formkit/vue": "0.17.0-08a1a6f",
     "@microsoft/fast-element": "^1.11.0",
     "lodash-es": "^4.17.21",
+    "pinia": "^2.0.34",
     "vue": "^3.2.47"
   },
   "devDependencies": {
+    "@pinia/testing": "^0.0.16",
     "@testing-library/vue": "^7.0.0",
     "@types/node": "^18.15.11",
     "@vitejs/plugin-vue": "^4.1.0",
