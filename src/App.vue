@@ -1,19 +1,17 @@
 <script setup lang="ts">
 import Layout from '@views/Layout.vue'
-import TheForm from '@components/TheForm.vue';
+import TheFormWrapper from '@components/modal_bodies/TheFormWrapper.vue';
 import TransactionsAccordion from '@components/TransactionsAccordion.vue';
 import OpenDialogButton from '@components/OpenDialogButton.vue';
 </script>
 
 <template>
   <Layout>
-    <TheForm />
     <TransactionsAccordion />
 
     <div class="ctaWrapper">
       <OpenDialogButton :button-text="'+ Add new transaction'" v-slot="slotProps">
-        <h1>Dialog body</h1>
-        <button @click="slotProps.closeDialog">Close</button>
+        <TheFormWrapper />
       </OpenDialogButton>
     </div>
   </Layout>
