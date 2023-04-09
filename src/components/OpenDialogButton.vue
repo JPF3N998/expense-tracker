@@ -8,7 +8,6 @@ const props = defineProps({
 })
 
 function openDialog() {
-  console.log('Clicked')
   dialog.value.hidden = false;
 }
 
@@ -34,3 +33,10 @@ function handleKeyDown(e: KeyboardEvent) {
     </fluent-dialog>
   </div>
 </template>
+
+<style>
+/* To enable dialog resizing: https://github.com/microsoft/fluentui-blazor/issues/207#issuecomment-1216541219 */
+::part(control) {
+  --dialog-height: fit-content
+}
+</style>
