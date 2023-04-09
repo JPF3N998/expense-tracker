@@ -1,11 +1,13 @@
 <script lang="ts" setup>
+import { reset } from '@formkit/vue';
 import { useTransactionsStore } from '@stores/transactionsStore';
 import CONSTANTS from '@constants'
 import Transaction from '@models/Transaction';
 
 const { CURRENCIES, FUIC } = CONSTANTS
-
 const transactionsStore = useTransactionsStore()
+
+const FORM_ID = 'newTransactionForm'
 
 const getToday = () => {
   const today = new Date()
@@ -114,13 +116,14 @@ function handleSubmit({ transaction: transactionData }: { transaction: Transacti
     }
   )
   transactionsStore.commitNewTransaction(transaction)
+  reset(FORM_ID)
 }
 
 </script>
 
 <template>
   <div>
-    <FormKit type="form" @submit="handleSubmit" submit-label="Register">
+    <FormKit :id="FORM_ID" type="form" @submit="handleSubmit" submit-label="Register">
       <FormKitSchema :schema="schema" />
     </FormKit>
   </div>
