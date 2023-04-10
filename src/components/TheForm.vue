@@ -1,36 +1,85 @@
 <script lang="ts" setup>
+import { reset } from '@formkit/vue';
 import { useTransactionsStore } from '@stores/transactionsStore';
-import CONSTANTS from '@constants'
+import CONSTANTS from '@constants';
 import Transaction from '@models/Transaction';
+import { type } from 'os';
 
-const { CURRENCIES, FUIC } = CONSTANTS
+const { CURRENCIES, FUIC } = CONSTANTS;
+const transactionsStore = useTransactionsStore();
 
-const transactionsStore = useTransactionsStore()
+const FORM_ID = 'newTransactionForm';
 
 const getToday = () => {
-  const today = new Date()
+  const today = new Date();
 
-  let month = `0${today.getMonth() + 1}`
-  let date = `0${today.getDate()}`
+  let month = `0${today.getMonth() + 1}`;
+  let date = `0${today.getDate()}`;
 
   // To set initial value of date input, prefix 0s are needed
   // These if blocks trims the zero if necessary
   if (month.length === 3) {
-    month = month.substring(1)
+    month = month.substring(1);
   }
 
   if (date.length === 3) {
-    date = date.substring(1)
+    date = date.substring(1);
   }
 
-  return `${today.getFullYear()}-${month}-${date}`
-}
+  return `${today.getFullYear()}-${month}-${date}`;
+};
+
+/**
+ * Add common properties to inputs found in "schema"
+ */
+const setCommonInputAttrs = () => {
+  const TRANSACTION_GROUP_INDEX = 1;
+  const fieldGroup = schema[TRANSACTION_GROUP_INDEX].children;
+
+  const TARGET_INPUT_TYPES = ['select', 'text', 'textarea'];
+
+  if (Array.isArray(fieldGroup)) {
+    fieldGroup.forEach((field) => {
+      if (TARGET_INPUT_TYPES.includes(field.$formkit)) {
+        // Set all fields' appearance -> "filled"
+        // @TODO: Fix TS types for FormKit schema
+        // @ts-ignore
+        field.appearance = 'filled';
+        // @ts-ignore
+        field.sectionsSchema.input.attrs = {
+          style: {
+            width: '110%',
+          },
+        };
+      }
+
+      if (field.$formkit === 'date') {
+        // @ts-ignore
+        field.style = {
+          'background-color': '#EFEFEF',
+          width: '109%',
+          'border-radius': '3px',
+          'border-style': 'none',
+          height: '2rem',
+          padding: '0 0.17rem',
+        };
+      }
+    });
+  }
+};
 
 // LINK: [How to modify sectionsSchema as prop](https://github.com/formkit/formkit/issues/643)
 const schema = [
   {
     $el: 'h1',
-    children: 'Add new transaction'
+    attrs: {
+      appearance: 'accent',
+      type: 'submit',
+      style: {
+        margin: 0,
+      },
+    },
+    children: 'Add new transaction',
   },
   {
     $formkit: 'group',
@@ -40,11 +89,12 @@ const schema = [
         $formkit: 'text',
         name: 'name',
         sectionsSchema: {
-          input: { $el: FUIC.fluentTextField }
+          input: { $el: FUIC.fluentTextField },
         },
         label: 'Transaction name',
         placeholder: '"New phone"',
         validation: 'required',
+        tabIndex: 1,
       },
       {
         $formkit: 'text',
@@ -54,16 +104,16 @@ const schema = [
         name: 'amount',
         label: 'Amount',
         sectionsSchema: {
-          input: { $el: FUIC.fluentTextField }
+          input: { $el: FUIC.fluentTextField },
         },
-        value: '1'
+        value: '1',
       },
       {
         $formkit: 'date',
         name: 'date',
         label: 'Date',
         validation: 'required',
-        value: getToday()
+        value: getToday(),
       },
       {
         $formkit: 'textarea',
@@ -73,9 +123,9 @@ const schema = [
         maxLength: 200,
         placeholder: 'Additional information...',
         sectionsSchema: {
-          input: { $el: FUIC.fluentTextArea }
+          input: { $el: FUIC.fluentTextArea },
         },
-        value: ''
+        value: '',
       },
       {
         $formkit: 'text',
@@ -94,34 +144,55 @@ const schema = [
         options: CURRENCIES,
         sectionsSchema: {
           input: { $el: FUIC.fluentSelect },
-          option: { $el: FUIC.fluentOption }
+          option: { $el: FUIC.fluentOption },
         },
-      }
-    ]
+      },
+    ],
   },
-]
+];
+
+setCommonInputAttrs();
 
 function handleSubmit({ transaction: transactionData }: { transaction: Transaction }) {
   const { name, amount, date, details, emoji, currency } = transactionData;
-  const transaction = new Transaction(
-    name,
-    amount,
-    date,
-    currency,
-    {
-      details,
-      emoji
-    }
-  )
-  transactionsStore.commitNewTransaction(transaction)
+  const transaction = new Transaction(name, amount, date, currency, {
+    details,
+    emoji,
+  });
+  transactionsStore.commitNewTransaction(transaction);
+  reset(FORM_ID);
 }
-
 </script>
 
 <template>
-  <div>
-    <FormKit type="form" @submit="handleSubmit" submit-label="Register">
-      <FormKitSchema :schema="schema" />
-    </FormKit>
-  </div>
+  <FormKit form-class="addTransactionForm" :id="FORM_ID" type="form" @submit="handleSubmit" :sections-schema="{
+    submit: {
+      $el: FUIC.fluentButton,
+      children: 'Submit',
+      attrs: {
+        appearance: 'accent',
+        type: 'submit',
+        style: {
+          width: '4rem',
+        },
+      },
+    },
+  }">
+    <FormKitSchema :schema="schema" />
+  </FormKit>
 </template>
+
+<style>
+.addTransactionForm {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  row-gap: 1.5rem;
+}
+</style>
+
+<style scoped>
+h1 {
+  margin: 0;
+}
+</style>

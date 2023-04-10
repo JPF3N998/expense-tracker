@@ -4,6 +4,7 @@
 const FUIC = {
   fluentAccordion: 'fluent-accordion',
   fluentAccordionItem: 'fluent-accordion-item',
+  fluentButton: 'fluent-button',
   fluentNumberField: 'fluent-number-field',
   fluentOption: 'fluent-option',
   fluentSelect: 'fluent-select',
