@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import Layout from '@views/Layout.vue'
+import Layout from '@views/Layout.vue';
 import TheFormWrapper from '@components/modal_bodies/TheFormWrapper.vue';
 import TransactionsAccordion from '@components/TransactionsAccordion.vue';
 import OpenDialogButton from '@components/OpenDialogButton.vue';
@@ -11,7 +11,7 @@ import OpenDialogButton from '@components/OpenDialogButton.vue';
 
     <div class="ctaWrapper">
       <OpenDialogButton :button-text="'+ Add new transaction'" v-slot="slotProps">
-        <TheFormWrapper />
+        <TheFormWrapper @closeDialog="slotProps.closeDialog" />
       </OpenDialogButton>
     </div>
   </Layout>
