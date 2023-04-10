@@ -24,7 +24,7 @@ function handleKeyDown(e: KeyboardEvent) {
 
 <template>
   <div @keydown="handleKeyDown">
-    <fluent-button appearance="accent" ref="dialogOpener" @click="openDialog">
+    <fluent-button class="ctaWrapper" appearance="accent" ref="dialogOpener" @click="openDialog">
       {{ props.buttonText }}
     </fluent-button>
     <fluent-dialog ref="dialog" hidden trap-focus modal>
@@ -46,5 +46,11 @@ function handleKeyDown(e: KeyboardEvent) {
   max-height: 96%;
   overflow-y: overlay;
   padding: 1rem;
+}
+
+.ctaWrapper {
+  position: fixed;
+  bottom: 1rem;
+  right: 1rem;
 }
 </style>

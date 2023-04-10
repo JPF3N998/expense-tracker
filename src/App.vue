@@ -8,19 +8,8 @@ import OpenDialogButton from '@components/OpenDialogButton.vue';
 <template>
   <Layout>
     <TransactionsAccordion />
-
-    <div class="ctaWrapper">
-      <OpenDialogButton :button-text="'+ Add new transaction'" v-slot="slotProps">
-        <TheFormWrapper @closeDialog="slotProps.closeDialog" />
-      </OpenDialogButton>
-    </div>
+    <OpenDialogButton :button-text="'+ Add new transaction'" v-slot="slotProps">
+      <TheFormWrapper @closeDialog="slotProps.closeDialog" />
+    </OpenDialogButton>
   </Layout>
 </template>
-
-<style scoped>
-.ctaWrapper {
-  position: fixed;
-  bottom: 1rem;
-  right: 1rem;
-}
-</style>
