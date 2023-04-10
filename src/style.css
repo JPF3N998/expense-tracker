@@ -1,0 +1,8 @@
+@font-face {
+  font-family: 'Monocraft';
+  src: url('./public/fonts/Monocraft.otf');
+}
+
+* {
+  font-family: 'Monocraft', 'New Courier', Courier, monospace;
+}

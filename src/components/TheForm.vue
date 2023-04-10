@@ -29,10 +29,56 @@ const getToday = () => {
   return `${today.getFullYear()}-${month}-${date}`;
 };
 
+/**
+ * Add common properties to inputs found in "schema"
+ */
+const setCommonInputAttrs = () => {
+  const TRANSACTION_GROUP_INDEX = 1;
+  const fieldGroup = schema[TRANSACTION_GROUP_INDEX].children;
+
+  const TARGET_INPUT_TYPES = ['select', 'text', 'textarea'];
+
+  if (Array.isArray(fieldGroup)) {
+    fieldGroup.forEach((field) => {
+      if (TARGET_INPUT_TYPES.includes(field.$formkit)) {
+        // Set all fields' appearance -> "filled"
+        // @TODO: Fix TS types for FormKit schema
+        // @ts-ignore
+        field.appearance = 'filled';
+        // @ts-ignore
+        field.sectionsSchema.input.attrs = {
+          style: {
+            width: '110%',
+          },
+        };
+      }
+
+      if (field.$formkit === 'date') {
+        // @ts-ignore
+        field.style = {
+          'background-color': '#EFEFEF',
+          width: '109%',
+          'border-radius': '3px',
+          'border-style': 'none',
+          height: '2rem',
+          padding: '0 0.17rem',
+        };
+      }
+    });
+  }
+};
+
 // LINK: [How to modify sectionsSchema as prop](https://github.com/formkit/formkit/issues/643)
 const schema = [
   {
     $el: 'h1',
+    attrs: {
+      appearance: 'accent',
+      type: 'submit',
+      style: {
+        margin: 0,
+      },
+    },
     children: 'Add new transaction',
   },
   {
@@ -105,19 +151,7 @@ const schema = [
   },
 ];
 
-// Set all fields' appearance -> "filled"
-const TRANSACTION_GROUP_INDEX = 1;
-const TARGET_INPUT_TYPES = ['select', 'text', 'textarea'];
-
-const fieldGroup = schema[TRANSACTION_GROUP_INDEX].children;
-if (Array.isArray(fieldGroup)) {
-  fieldGroup.forEach((field) => {
-    if (TARGET_INPUT_TYPES.includes(field.$formkit)) {
-      // @ts-ignore
-      field.appearance = 'filled';
-    }
-  });
-}
+setCommonInputAttrs();
 
 function handleSubmit({ transaction: transactionData }: { transaction: Transaction }) {
   const { name, amount, date, details, emoji, currency } = transactionData;
@@ -153,7 +187,7 @@ function handleSubmit({ transaction: transactionData }: { transaction: Transacti
   display: flex;
   flex-direction: column;
   height: 100%;
-  row-gap: 1rem;
+  row-gap: 1.5rem;
 }
 </style>
 
