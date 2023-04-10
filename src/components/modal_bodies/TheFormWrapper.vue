@@ -3,13 +3,17 @@ import TheForm from '@components/TheForm.vue';
 </script>
 
 <template>
-  <div class="formWrapper">
+  <div class="formWrapper hiddenScrollbar">
     <TheForm />
+    <fluent-button class="closeButton" appearance="stealth" @click="$emit('closeDialog')">
+      Close
+    </fluent-button>
   </div>
 </template>
 
 <style scoped>
 .formWrapper {
-  padding: 1rem;
+  display: grid;
+  grid-template-columns: 10fr 1fr;
 }
 </style>
