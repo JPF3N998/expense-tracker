@@ -6,3 +6,8 @@
 * {
   font-family: 'Monocraft', 'New Courier', Courier, monospace;
 }
+
+html {
+  height: 100%;
+  overflow-y: hidden;
+}
