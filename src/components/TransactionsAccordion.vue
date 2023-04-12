@@ -7,8 +7,8 @@ const transactionsStore = useTransactionsStore();
 </script>
 
 <template>
-  <h1>Transactions</h1>
   <div class="accordionWrapper hiddenScrollbar">
+    <h1>Transactions</h1>
     <fluent-accordion class="accordion" expand-mode="single">
       <fluent-accordion-item v-for="tx in transactionsStore.transactions" :key="tx.getId()">
         <TransactionAccordionItem :transaction="tx" />
@@ -29,7 +29,6 @@ fluent-accordion-item::part(heading):hover {
 }
 
 fluent-accordion-item::part(button):hover {
-  background-color: var(--accent-fill-hover);
   border-radius: calc(var(--layer-corner-radius) * 1px);
   color: var(--foreground-on-accent-rest);
 }
@@ -52,8 +51,7 @@ fluent-accordion-item[expanded]::part(button) {
 .accordionWrapper {
   max-height: 40%;
   overflow: overlay;
-  padding: 1rem;
-  padding-left: 0;
+  padding: 0.5rem;
 }
 
 .hiddenScrollbar::-webkit-scrollbar {
