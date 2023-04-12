@@ -49,7 +49,7 @@ fluent-accordion-item[expanded]::part(button) {
 }
 
 .accordionWrapper {
-  max-height: 40%;
+  max-height: 45%;
   overflow: overlay;
   padding: 0.5rem;
 }
