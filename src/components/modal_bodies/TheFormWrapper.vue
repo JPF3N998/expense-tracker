@@ -3,7 +3,7 @@ import TheForm from '@components/TheForm.vue';
 </script>
 
 <template>
-  <div class="formWrapper hiddenScrollbar">
+  <div class="formWrapper">
     <TheForm />
     <fluent-button class="closeButton" appearance="stealth" @click="$emit('closeDialog')">
       Close
