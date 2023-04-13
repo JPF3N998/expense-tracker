@@ -5,9 +5,8 @@ import { useTransactionsStore } from '@stores/transactionsStore';
 
 const transactionsStore = useTransactionsStore();
 
-
 function deleteTransaction(transactionId: string) {
-  console.log('Deleting ', transactionId)
+  transactionsStore.deleteTransaction(transactionId)
 }
 
 </script>
@@ -55,7 +54,7 @@ fluent-accordion-item[expanded]::part(button) {
 }
 
 .accordionWrapper {
-  max-height: 45%;
+  height: 90vh;
   overflow: overlay;
   padding: 0.5rem;
 }

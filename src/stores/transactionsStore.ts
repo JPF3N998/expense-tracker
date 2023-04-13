@@ -17,11 +17,17 @@ export const useTransactionsStore = defineStore('transactions', () => {
     transactions.value.push(newTransaction);
   }
 
+  function deleteTransaction(transactionId: string) {
+    const index = transactions.value.findIndex((transaction) => transaction.getId() === transactionId);
+    transactions.value.splice(index, 1)
+  }
+
   return {
     // State
     transactions,
 
     // Actions
     commitNewTransaction,
+    deleteTransaction
   };
 });
