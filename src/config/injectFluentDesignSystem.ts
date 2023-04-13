@@ -1,5 +1,4 @@
 import {
-  accentPalette,
   fluentAccordion,
   fluentAccordionItem,
   fluentButton,
