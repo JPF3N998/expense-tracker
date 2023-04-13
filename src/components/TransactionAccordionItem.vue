@@ -1,12 +1,25 @@
 <script setup lang="ts">
-import { ref } from 'vue'
+import { Ref, ref } from 'vue'
 import Transaction from '@models/Transaction';
 
 const props = defineProps<{
   transaction: Omit<Transaction, '#id'>
 }>()
 
+defineEmits<{
+  (e: 'deleteTransaction', transactionId: string): void
+}>()
+
 const description = ref(props.transaction.details)
+
+const deleteBtn: Ref<HTMLElement | null> = ref(null)
+
+// How to set color to specific elements
+// onMounted(() => {
+//   if (!!deleteBtn.value) {
+//     accentBaseColor.setValueFor(deleteBtn.value, SwatchRGB.create(92,209,170))
+//   }
+// })
 
 </script>
 
@@ -18,9 +31,10 @@ const description = ref(props.transaction.details)
     </div>
     <span class="date">{{ transaction.date }}</span>
   </section>
-  <section>
+  <section class="panel">
     <label class="header">Details</label>
     <p>{{ description }}</p>
+    <fluent-button ref="deleteBtn" appearance="outline" @click="$emit('deleteTransaction', transaction.getId())">Delete</fluent-button>
   </section>
 </template>
 
@@ -37,6 +51,12 @@ const description = ref(props.transaction.details)
 .header {
   font-size: larger;
   font-weight: bold;
+}
+
+.panel {
+  display: flex;
+  flex-direction: column;
+  row-gap: 1rem;
 }
 
 p {

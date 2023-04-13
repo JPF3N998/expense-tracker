@@ -4,14 +4,20 @@ import TransactionAccordionItem from '@components/TransactionAccordionItem.vue';
 import { useTransactionsStore } from '@stores/transactionsStore';
 
 const transactionsStore = useTransactionsStore();
+
+
+function deleteTransaction(transactionId: string) {
+  console.log('Deleting ', transactionId)
+}
+
 </script>
 
 <template>
   <div class="accordionWrapper hiddenScrollbar">
     <h1>Transactions</h1>
-    <fluent-accordion class="accordion" expand-mode="single">
+    <fluent-accordion class="accordion" expand-mode="single" @delete-transaction="deleteTransaction">
       <fluent-accordion-item v-for="tx in transactionsStore.transactions" :key="tx.getId()">
-        <TransactionAccordionItem :transaction="tx" />
+        <TransactionAccordionItem :transaction="tx" @delete-transaction="deleteTransaction" />
       </fluent-accordion-item>
     </fluent-accordion>
   </div>
