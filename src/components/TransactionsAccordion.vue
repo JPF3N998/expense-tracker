@@ -15,7 +15,7 @@ function deleteTransaction(transactionId: string) {
   <div class="accordionWrapper hiddenScrollbar">
     <h1>Transactions</h1>
     <fluent-accordion class="accordion" expand-mode="single" @delete-transaction="deleteTransaction">
-      <fluent-accordion-item v-for="tx in transactionsStore.transactions" :key="tx.getId()">
+      <fluent-accordion-item v-for="tx in transactionsStore.transactions" :key="tx.id">
         <TransactionAccordionItem :transaction="tx" @delete-transaction="deleteTransaction" />
       </fluent-accordion-item>
     </fluent-accordion>

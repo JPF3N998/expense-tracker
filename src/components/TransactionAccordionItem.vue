@@ -34,7 +34,7 @@ const deleteBtn: Ref<HTMLElement | null> = ref(null)
   <section class="panel">
     <label class="header">Details</label>
     <p>{{ description }}</p>
-    <fluent-button ref="deleteBtn" appearance="outline" @click="$emit('deleteTransaction', transaction.getId())">Delete</fluent-button>
+    <fluent-button ref="deleteBtn" appearance="outline" @click="$emit('deleteTransaction', transaction.id)">Delete</fluent-button>
   </section>
 </template>
 
