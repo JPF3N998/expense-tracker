@@ -1,8 +1,17 @@
 <script setup lang="ts">
+import { onMounted } from 'vue';
+import { useTransactionsStore } from '@stores/transactionsStore';
 import Layout from '@views/Layout.vue';
 import TheFormWrapper from '@components/modal_bodies/TheFormWrapper.vue';
 import TransactionsAccordion from '@components/TransactionsAccordion.vue';
 import OpenDialogButton from '@components/OpenDialogButton.vue';
+
+const transactionsStore = useTransactionsStore()
+
+onMounted(() => {
+  transactionsStore.loadFromDatabase()
+})
+
 </script>
 
 <template>
