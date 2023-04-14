@@ -21,7 +21,7 @@ describe('Transaction Class', () => {
       expectedTransaction.date
     );
 
-    expectedTransaction.id = tx.getId();
+    expectedTransaction.id = tx.id;
 
     expect(tx).toEqual(expectedTransaction);
   });

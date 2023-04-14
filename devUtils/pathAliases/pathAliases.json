@@ -4,6 +4,7 @@
   "@config": "src/config",
   "@constants": "src/constants",
   "@models": "src/models",
+  "@services": "src/services",
   "@stores": "src/stores",
   "@views": "src/views"
 }
